@@ -21,13 +21,11 @@ public class Calculator implements ActionListener{
 	JButton oneButton;
 	JButton twoButton;
 	JButton threeButton;
-	JButton dotButton;
+	JButton dotButton,clearButton;
 	JButton zeroButton;
-	JButton equalButton;
-	JButton divButton;
-	JButton mulButton;
-	JButton minusButton;
-	JButton plusButton;
+	JButton equalButton,divButton,mulButton,minusButton,plusButton;
+	
+	
 	public Calculator() {
 		jf=new JFrame("Calculator");
 		jf.setLayout(null);
@@ -177,6 +175,13 @@ public class Calculator implements ActionListener{
 		plusButton.addActionListener(this);
 		jf.add(plusButton);
 		
+		clearButton=new JButton("C");
+		clearButton.setBounds(430,430 , 80, 80);
+		clearButton.setFont(new Font("Arial", Font.PLAIN, 30));
+		clearButton.setBackground(Color.BLACK);
+		clearButton.setForeground(Color.WHITE);
+		clearButton.addActionListener(this);
+		jf.add(clearButton);
 		
 		
 		jf.setVisible(true);    //window made visible
@@ -234,6 +239,9 @@ public class Calculator implements ActionListener{
 		}
 		else if(e.getSource()==equalButton) {
 			
+		}
+		else if(e.getSource()==clearButton) {
+			displayLabel.setText("");
 		}
 		
 	}
