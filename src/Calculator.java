@@ -1,14 +1,14 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-public class Calculator{
+public class Calculator implements ActionListener{
 	
 	JFrame jf;
 	JLabel displayLabel;
@@ -52,6 +52,7 @@ public class Calculator{
 		sevenButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		sevenButton.setBackground(Color.BLACK);
 		sevenButton.setForeground(Color.WHITE);
+		sevenButton.addActionListener(this);
 		jf.add(sevenButton);
 		
 		eightButton=new JButton("8");
@@ -59,6 +60,7 @@ public class Calculator{
 		eightButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		eightButton.setBackground(Color.BLACK);
 		eightButton.setForeground(Color.WHITE);
+		eightButton.addActionListener(this);
 		jf.add(eightButton);
 
 		nineButton=new JButton("9");
@@ -66,6 +68,7 @@ public class Calculator{
 		nineButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		nineButton.setBackground(Color.BLACK);
 		nineButton.setForeground(Color.WHITE);
+		nineButton.addActionListener(this);
 		jf.add(nineButton);
 		
 		
@@ -74,6 +77,7 @@ public class Calculator{
 		fourButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		fourButton.setBackground(Color.BLACK);
 		fourButton.setForeground(Color.WHITE);
+		fourButton.addActionListener(this);
 		jf.add(fourButton);
 
 		fiveButton=new JButton("5");
@@ -81,6 +85,7 @@ public class Calculator{
 		fiveButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		fiveButton.setBackground(Color.BLACK);
 		fiveButton.setForeground(Color.WHITE);
+		fiveButton.addActionListener(this);
 		jf.add(fiveButton);
 
 		sixButton=new JButton("6");
@@ -88,6 +93,7 @@ public class Calculator{
 		sixButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		sixButton.setBackground(Color.BLACK);
 		sixButton.setForeground(Color.WHITE);
+		sixButton.addActionListener(this);
 		jf.add(sixButton);
 		
 		oneButton=new JButton("1");
@@ -95,6 +101,7 @@ public class Calculator{
 		oneButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		oneButton.setBackground(Color.BLACK);
 		oneButton.setForeground(Color.WHITE);
+		oneButton.addActionListener(this);
 		jf.add(oneButton);
 
 		twoButton=new JButton("2");
@@ -102,6 +109,7 @@ public class Calculator{
 		twoButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		twoButton.setBackground(Color.BLACK);
 		twoButton.setForeground(Color.WHITE);
+		twoButton.addActionListener(this);
 		jf.add(twoButton);
 
 		threeButton=new JButton("3");
@@ -109,6 +117,7 @@ public class Calculator{
 		threeButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		threeButton.setBackground(Color.BLACK);
 		threeButton.setForeground(Color.WHITE);
+		threeButton.addActionListener(this);
 		jf.add(threeButton);
 		
 		dotButton=new JButton(".");
@@ -116,6 +125,7 @@ public class Calculator{
 		dotButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		dotButton.setBackground(Color.BLACK);
 		dotButton.setForeground(Color.WHITE);
+		dotButton.addActionListener(this);
 		jf.add(dotButton);
 
 		zeroButton=new JButton("0");
@@ -123,6 +133,7 @@ public class Calculator{
 		zeroButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		zeroButton.setBackground(Color.BLACK);
 		zeroButton.setForeground(Color.WHITE);
+		zeroButton.addActionListener(this);
 		jf.add(zeroButton);
 
 		equalButton=new JButton("=");
@@ -130,6 +141,7 @@ public class Calculator{
 		equalButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		equalButton.setBackground(Color.BLACK);
 		equalButton.setForeground(Color.WHITE);
+		equalButton.addActionListener(this);
 		jf.add(equalButton);
 		
 		
@@ -138,6 +150,7 @@ public class Calculator{
 		divButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		divButton.setBackground(Color.BLACK);
 		divButton.setForeground(Color.WHITE);
+		divButton.addActionListener(this);
 		jf.add(divButton);
         
 		mulButton=new JButton("x");
@@ -145,6 +158,7 @@ public class Calculator{
 		mulButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		mulButton.setBackground(Color.BLACK);
 		mulButton.setForeground(Color.WHITE);
+		mulButton.addActionListener(this);
 		jf.add(mulButton);
 		
 		minusButton=new JButton("-");
@@ -152,6 +166,7 @@ public class Calculator{
 		minusButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		minusButton.setBackground(Color.BLACK);
 		minusButton.setForeground(Color.WHITE);
+		minusButton.addActionListener(this);
 		jf.add(minusButton);
 		
 		plusButton=new JButton("+");
@@ -159,6 +174,7 @@ public class Calculator{
 		plusButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		plusButton.setBackground(Color.BLACK);
 		plusButton.setForeground(Color.WHITE);
+		plusButton.addActionListener(this);
 		jf.add(plusButton);
 		
 		
@@ -169,6 +185,57 @@ public class Calculator{
    
 	public static void main(String[] args) {
 		new Calculator();   //object for class Calculator 
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource()==sevenButton) {
+			displayLabel.setText("7");
+		}else if(e.getSource()==eightButton) {
+			displayLabel.setText("8");
+		}else if(e.getSource()==nineButton) {
+			displayLabel.setText("9");
+		}
+		else if(e.getSource()==fourButton) {
+			displayLabel.setText("4");
+		}
+		else if(e.getSource()==fiveButton) {
+			displayLabel.setText("5");
+		}
+		else if(e.getSource()==sixButton) {
+			displayLabel.setText("6");
+		}
+		else if(e.getSource()==oneButton) {
+			displayLabel.setText("1");
+		}
+		else if(e.getSource()==twoButton) {
+			displayLabel.setText("2");
+		}
+		else if(e.getSource()==threeButton) {
+			displayLabel.setText("3");
+		}
+		else if(e.getSource()==dotButton) {
+			displayLabel.setText(".");
+		}
+		else if(e.getSource()==zeroButton) {
+			displayLabel.setText("0");
+		}else if(e.getSource()==divButton) {
+			
+		}
+		else if(e.getSource()==mulButton) {
+			
+		}
+		else if(e.getSource()==minusButton) {
+	
+		}
+		else if(e.getSource()==plusButton) {
+
+		}
+		else if(e.getSource()==equalButton) {
+			
+		}
+		
 	}
 
 	
