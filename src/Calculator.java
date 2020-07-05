@@ -1,5 +1,6 @@
 import java.awt.Color;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -12,7 +13,7 @@ public class Calculator {
 		jf.setSize(600, 600);   //width,height
 		jf.setLocation(300,150);  //position of the window on the screen
 		
-		//display screen
+		//Display screen
 		JLabel displayLabel=new JLabel("hello");
 		displayLabel.setBounds(30, 50, 540, 40);
 		displayLabel.setBackground(Color.gray);
@@ -22,6 +23,74 @@ public class Calculator {
 		jf.add(displayLabel);
 		
 		
+		
+		//Buttons in calculator
+		
+		JButton sevenButton=new JButton("7");
+		sevenButton.setBounds(30,130 , 80, 80);
+		jf.add(sevenButton);
+
+		JButton eightButton=new JButton("8");
+		eightButton.setBounds(130,130 , 80, 80);
+		jf.add(eightButton);
+
+		JButton nineButton=new JButton("9");
+		nineButton.setBounds(230,130 , 80, 80);
+		jf.add(nineButton);
+		
+		
+		JButton fourButton=new JButton("4");
+		fourButton.setBounds(30,230 , 80, 80);
+		jf.add(fourButton);
+
+		JButton fiveButton=new JButton("5");
+		fiveButton.setBounds(130,230 , 80, 80);
+		jf.add(fiveButton);
+
+		JButton sixButton=new JButton("6");
+		sixButton.setBounds(230,230 , 80, 80);
+		jf.add(sixButton);
+		
+		JButton oneButton=new JButton("1");
+		oneButton.setBounds(30,330 , 80, 80);
+		jf.add(oneButton);
+
+		JButton twoButton=new JButton("2");
+		twoButton.setBounds(130,330 , 80, 80);
+		jf.add(twoButton);
+
+		JButton threeButton=new JButton("3");
+		threeButton.setBounds(230,330 , 80, 80);
+		jf.add(threeButton);
+		
+		JButton dotButton=new JButton(".");
+		dotButton.setBounds(30,430 , 80, 80);
+		jf.add(dotButton);
+
+		JButton zeroButton=new JButton("0");
+		zeroButton.setBounds(130,430 , 80, 80);
+		jf.add(zeroButton);
+
+		JButton equalButton=new JButton("=");
+		equalButton.setBounds(230,430 , 80, 80);
+		jf.add(equalButton);
+		
+		
+		JButton divButton=new JButton("/");
+		divButton.setBounds(330,130 , 80, 80);
+		jf.add(divButton);
+        
+		JButton mulButton=new JButton("x");
+		mulButton.setBounds(330,230 , 80, 80);
+		jf.add(mulButton);
+		
+		JButton minusButton=new JButton("-");
+		minusButton.setBounds(330,330 , 80, 80);
+		jf.add(minusButton);
+		
+		JButton plusButton=new JButton("+");
+		plusButton.setBounds(330,430 , 80, 80);
+		jf.add(plusButton);
 		
 		
 		
