@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class Calculator implements ActionListener{
-	
+	boolean isOperatorClicked=false;
 	JFrame jf;
 	JLabel displayLabel;
 	JButton sevenButton;
@@ -178,7 +178,7 @@ public class Calculator implements ActionListener{
 		clearButton=new JButton("C");
 		clearButton.setBounds(430,430 , 80, 80);
 		clearButton.setFont(new Font("Arial", Font.PLAIN, 30));
-		clearButton.setBackground(Color.BLACK);
+		clearButton.setBackground(Color.decode("#091FA1"));
 		clearButton.setForeground(Color.WHITE);
 		clearButton.addActionListener(this);
 		jf.add(clearButton);
@@ -196,45 +196,117 @@ public class Calculator implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource()==sevenButton) {
-			displayLabel.setText(displayLabel.getText()+ "7");
-		}else if(e.getSource()==eightButton) {
-			displayLabel.setText(displayLabel.getText()+ "8");
-		}else if(e.getSource()==nineButton) {
-			displayLabel.setText(displayLabel.getText()+ "9");
+			if(isOperatorClicked) {
+				displayLabel.setText("7");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+ "7");	
+			}
 		}
+		
+		else if(e.getSource()==eightButton) {
+			 if(isOperatorClicked) {
+				displayLabel.setText("8");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+ "8");	
+			}
+			}
+		
+		else if(e.getSource()==nineButton) {
+			 if(isOperatorClicked) {
+					displayLabel.setText("9");
+					isOperatorClicked=false;
+				}else {
+					displayLabel.setText(displayLabel.getText()+ "9");
+				}
+			}
+		
 		else if(e.getSource()==fourButton) {
-			displayLabel.setText(displayLabel.getText()+ "4");
+			if(isOperatorClicked) {
+				displayLabel.setText("4");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+ "4");	
+			}	
 		}
+		
 		else if(e.getSource()==fiveButton) {
-			displayLabel.setText(displayLabel.getText()+ "5");
+			if(isOperatorClicked) {
+				displayLabel.setText("5");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+ "5");	
+			}
 		}
 		else if(e.getSource()==sixButton) {
-			displayLabel.setText(displayLabel.getText()+ "6");
+			if(isOperatorClicked) {
+				displayLabel.setText("6");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+ "6");	
+			}
 		}
+		
 		else if(e.getSource()==oneButton) {
-			displayLabel.setText(displayLabel.getText()+ "1");
+			if(isOperatorClicked) {
+				displayLabel.setText("1");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+ "1");	
+			}
 		}
+		
 		else if(e.getSource()==twoButton) {
-			displayLabel.setText(displayLabel.getText()+ "2");
+			if(isOperatorClicked) {
+				displayLabel.setText("2");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+ "2");	
+			}
 		}
 		else if(e.getSource()==threeButton) {
-			displayLabel.setText(displayLabel.getText()+ "3");
+			if(isOperatorClicked) {
+				displayLabel.setText("3");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+ "3");	
+			}
 		}
 		else if(e.getSource()==dotButton) {
-			displayLabel.setText(displayLabel.getText()+ ".");
+			if(isOperatorClicked) {
+				displayLabel.setText(".");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+ ".");	
+			}
 		}
 		else if(e.getSource()==zeroButton) {
-			displayLabel.setText(displayLabel.getText()+ "0");
+			if(isOperatorClicked) {
+				displayLabel.setText("0");
+				isOperatorClicked=false;
+			}else {
+				displayLabel.setText(displayLabel.getText()+ "0");	
+			}
+			
 		}else if(e.getSource()==divButton) {
+			
+			isOperatorClicked=true;
 			
 		}
 		else if(e.getSource()==mulButton) {
 			
+			isOperatorClicked=true;
+			
 		}
 		else if(e.getSource()==minusButton) {
 	
+			isOperatorClicked=true;
+			
 		}
 		else if(e.getSource()==plusButton) {
+			
+			isOperatorClicked=true;
 
 		}
 		else if(e.getSource()==equalButton) {
