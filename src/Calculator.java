@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 
 public class Calculator implements ActionListener{
 	boolean isOperatorClicked=false;
+	String oldValue;
 	JFrame jf;
 	JLabel displayLabel;
 	JButton sevenButton;
@@ -307,6 +308,8 @@ public class Calculator implements ActionListener{
 		else if(e.getSource()==plusButton) {
 			
 			isOperatorClicked=true;
+			oldValue=displayLabel.getText();
+			
 
 		}
 		else if(e.getSource()==equalButton) {
