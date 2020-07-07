@@ -10,8 +10,10 @@ import javax.swing.SwingConstants;
 
 public class Calculator implements ActionListener{
 	boolean isOperatorClicked=false;
-	String oldValue;
+	boolean isEqualToClickedAlready=false;
+	String oldValue,newValue;
 	String operator;
+	Float oldValueF,newValueF;
 	
 	JFrame jf;
 	JLabel displayLabel;
@@ -322,10 +324,16 @@ public class Calculator implements ActionListener{
 
 		}
 		else if(e.getSource()==equalButton) {
-			String newValue=displayLabel.getText();
-			float oldValueF=Float.parseFloat(oldValue);
-			float newValueF=Float.parseFloat(newValue);
-			
+			if(isEqualToClickedAlready==false) {
+			newValue=displayLabel.getText();
+			oldValueF=Float.parseFloat(oldValue);
+			newValueF=Float.parseFloat(newValue);
+			isEqualToClickedAlready=true;
+			}else {
+				oldValue=displayLabel.getText();
+				oldValueF=Float.parseFloat(oldValue);
+				
+			}
 			if(operator=="/") {
 				float result=oldValueF/newValueF;
 				displayLabel.setText(result+"");
@@ -351,6 +359,7 @@ public class Calculator implements ActionListener{
 		}
 		else if(e.getSource()==clearButton) {
 			displayLabel.setText("");
+			isEqualToClickedAlready=false;
 		}
 		
 	}
