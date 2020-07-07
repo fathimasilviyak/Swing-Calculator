@@ -11,6 +11,8 @@ import javax.swing.SwingConstants;
 public class Calculator implements ActionListener{
 	boolean isOperatorClicked=false;
 	String oldValue;
+	String operator;
+	
 	JFrame jf;
 	JLabel displayLabel;
 	JButton sevenButton;
@@ -293,27 +295,59 @@ public class Calculator implements ActionListener{
 		}else if(e.getSource()==divButton) {
 			
 			isOperatorClicked=true;
+			oldValue=displayLabel.getText();
+			operator="/";
 			
 		}
 		else if(e.getSource()==mulButton) {
 			
 			isOperatorClicked=true;
+			oldValue=displayLabel.getText();
+			operator="x";
 			
 		}
 		else if(e.getSource()==minusButton) {
 	
 			isOperatorClicked=true;
+			oldValue=displayLabel.getText();
+			operator="-";
 			
 		}
 		else if(e.getSource()==plusButton) {
 			
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
+			operator="+";
 			
 
 		}
 		else if(e.getSource()==equalButton) {
+			String newValue=displayLabel.getText();
+			float oldValueF=Float.parseFloat(oldValue);
+			float newValueF=Float.parseFloat(newValue);
 			
+			if(operator=="/") {
+				float result=oldValueF/newValueF;
+				displayLabel.setText(result+"");
+			}
+			else if(operator=="x") {
+				float result=oldValueF*newValueF;
+				displayLabel.setText(result+"");
+			}
+			else if(operator=="-") {
+				float result=oldValueF-newValueF;
+				displayLabel.setText(result+"");
+			}
+			else if(operator=="+") {
+				float result=oldValueF+newValueF;
+				displayLabel.setText(result+"");
+			}
+			
+		
+		
+		
+		
+		
 		}
 		else if(e.getSource()==clearButton) {
 			displayLabel.setText("");
