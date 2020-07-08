@@ -299,13 +299,14 @@ public class Calculator implements ActionListener{
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="/";
-			
+			isEqualToClickedAlready=false;
 		}
 		else if(e.getSource()==mulButton) {
 			
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="x";
+			isEqualToClickedAlready=false;
 			
 		}
 		else if(e.getSource()==minusButton) {
@@ -313,6 +314,7 @@ public class Calculator implements ActionListener{
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="-";
+			isEqualToClickedAlready=false;
 			
 		}
 		else if(e.getSource()==plusButton) {
@@ -320,6 +322,7 @@ public class Calculator implements ActionListener{
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="+";
+			isEqualToClickedAlready=false;
 			
 
 		}
@@ -349,6 +352,7 @@ public class Calculator implements ActionListener{
 			else if(operator=="+") {
 				float result=oldValueF+newValueF;
 				displayLabel.setText(result+"");
+				
 			}
 			
 		
