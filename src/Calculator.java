@@ -11,7 +11,7 @@ import javax.swing.SwingConstants;
 public class Calculator implements ActionListener{
 	boolean isOperatorClicked=false;
 	boolean isEqualToClickedAlready=false;
-	String oldValue,newValue;
+	String oldValue="0",newValue;
 	String operator;
 	Float oldValueF,newValueF;
 	
@@ -42,10 +42,11 @@ public class Calculator implements ActionListener{
 		displayLabel=new JLabel();
 		displayLabel.setBounds(30, 40, 350, 60);
 		displayLabel.setFont(new Font("Serif", Font.PLAIN, 50));
-		displayLabel.setBackground(Color.decode("#585A67"));
+		displayLabel.setBackground(Color.decode("#1F2333"));
 		displayLabel.setOpaque(true);
 		displayLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		displayLabel.setForeground(Color.white);
+		displayLabel.setText("0");
 		jf.add(displayLabel);
 		
 		
@@ -55,7 +56,7 @@ public class Calculator implements ActionListener{
 		clearButton=new JButton("C");
 		clearButton.setBounds(30,130 , 80, 80);
 		clearButton.setFont(new Font("Arial", Font.PLAIN, 30));
-		clearButton.setBackground(Color.decode("#7D829D"));
+		clearButton.setBackground(Color.decode("#434B69"));
 		clearButton.setForeground(Color.WHITE);
 		clearButton.addActionListener(this);
 		jf.add(clearButton);
@@ -63,7 +64,7 @@ public class Calculator implements ActionListener{
 		signButton=new JButton("+/-");
 		signButton.setBounds(120,130 , 80,80); 
 		signButton.setFont(new Font("Arial", Font.PLAIN, 30));
-		signButton.setBackground(Color.decode("#7D829D"));
+		signButton.setBackground(Color.decode("#434B69"));
 		signButton.setForeground(Color.WHITE);
 		signButton.addActionListener(this);
 		jf.add(signButton);
@@ -71,7 +72,7 @@ public class Calculator implements ActionListener{
 		modButton=new JButton("%");
 		modButton.setBounds(210,130 , 80, 80); 
 		modButton.setFont(new Font("Arial", Font.PLAIN, 30));
-		modButton.setBackground(Color.decode("#7D829D"));
+		modButton.setBackground(Color.decode("#434B69"));
 		modButton.setForeground(Color.WHITE);
 		modButton.addActionListener(this);
 		jf.add(modButton);
@@ -224,7 +225,7 @@ public class Calculator implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource()==sevenButton) {
-			if(isOperatorClicked||isEqualToClickedAlready) {
+			if(isOperatorClicked||displayLabel.getText()=="0") {
 				displayLabel.setText("7");
 				isOperatorClicked=false;
 			}else {
@@ -233,7 +234,7 @@ public class Calculator implements ActionListener{
 		}
 		
 		else if(e.getSource()==eightButton) {
-			 if(isOperatorClicked||isEqualToClickedAlready) {
+			 if(isOperatorClicked||displayLabel.getText()=="0") {
 				displayLabel.setText("8");
 				isOperatorClicked=false;
 			}else {
@@ -242,16 +243,17 @@ public class Calculator implements ActionListener{
 			}
 		
 		else if(e.getSource()==nineButton) {
-			 if(isOperatorClicked||isEqualToClickedAlready) {
+			 if(isOperatorClicked||displayLabel.getText()=="0") {
 					displayLabel.setText("9");
 					isOperatorClicked=false;
 				}else {
+					
 					displayLabel.setText(displayLabel.getText()+ "9");
 				}
 			}
 		
 		else if(e.getSource()==fourButton) {
-			if(isOperatorClicked||isEqualToClickedAlready) {
+			if(isOperatorClicked||displayLabel.getText()=="0") {
 				displayLabel.setText("4");
 				isOperatorClicked=false;
 			}else {
@@ -260,7 +262,7 @@ public class Calculator implements ActionListener{
 		}
 		
 		else if(e.getSource()==fiveButton) {
-			if(isOperatorClicked||isEqualToClickedAlready) {
+			if(isOperatorClicked||displayLabel.getText()=="0") {
 				displayLabel.setText("5");
 				isOperatorClicked=false;
 			}else {
@@ -268,7 +270,7 @@ public class Calculator implements ActionListener{
 			}
 		}
 		else if(e.getSource()==sixButton) {
-			if(isOperatorClicked||isEqualToClickedAlready) {
+			if(isOperatorClicked||displayLabel.getText()=="0") {
 				displayLabel.setText("6");
 				isOperatorClicked=false;
 			}else {
@@ -277,7 +279,7 @@ public class Calculator implements ActionListener{
 		}
 		
 		else if(e.getSource()==oneButton) {
-			if(isOperatorClicked||isEqualToClickedAlready) {
+			if(isOperatorClicked||displayLabel.getText()=="0") {
 				displayLabel.setText("1");
 				isOperatorClicked=false;
 			}else {
@@ -286,7 +288,7 @@ public class Calculator implements ActionListener{
 		}
 		
 		else if(e.getSource()==twoButton) {
-			if(isOperatorClicked||isEqualToClickedAlready) {
+			if(isOperatorClicked||displayLabel.getText()=="0") {
 				displayLabel.setText("2");
 				isOperatorClicked=false;
 			}else {
@@ -294,7 +296,7 @@ public class Calculator implements ActionListener{
 			}
 		}
 		else if(e.getSource()==threeButton) {
-			if(isOperatorClicked||isEqualToClickedAlready) {
+			if(isOperatorClicked||displayLabel.getText()=="0") {
 				displayLabel.setText("3");
 				isOperatorClicked=false;
 			}else {
@@ -302,22 +304,41 @@ public class Calculator implements ActionListener{
 			}
 		}
 		else if(e.getSource()==dotButton) {
-			if(isOperatorClicked||isEqualToClickedAlready) {
-				displayLabel.setText(".");
+			if(isOperatorClicked) {
+				displayLabel.setText("0.");
 				isOperatorClicked=false;
 			}else {
 				displayLabel.setText(displayLabel.getText()+ ".");	
 			}
 		}
 		else if(e.getSource()==zeroButton) {
-			if(isOperatorClicked||isEqualToClickedAlready) {
+			if(isOperatorClicked||displayLabel.getText()=="0") {
 				displayLabel.setText("0");
 				isOperatorClicked=false;
 			}else {
 				displayLabel.setText(displayLabel.getText()+ "0");	
 			}
 			
-		}else if(e.getSource()==divButton) {
+		}
+		
+		
+		
+		/*else if(e.getSource()==modButton) {
+			
+			
+			//isOperatorClicked=true;
+			oldValue=displayLabel.getText();
+			oldValueF=Float.parseFloat(oldValue)/100;
+			displayLabel.setText(oldValueF+"");
+			//operator="/";
+			//isEqualToClickedAlready=false;
+		}
+		*/
+		
+		
+		
+		
+		else if(e.getSource()==divButton) {
 			
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
@@ -350,15 +371,18 @@ public class Calculator implements ActionListener{
 
 		}
 		else if(e.getSource()==equalButton) {
+			
+			isOperatorClicked=true;
 			if(isEqualToClickedAlready==false) {
 			newValue=displayLabel.getText();
 			oldValueF=Float.parseFloat(oldValue);
 			newValueF=Float.parseFloat(newValue);
 			isEqualToClickedAlready=true;
+			
 			}else {
 				oldValue=displayLabel.getText();
 				oldValueF=Float.parseFloat(oldValue);
-				
+			
 			}
 			if(operator=="/") {
 				float result=oldValueF/newValueF;
@@ -377,6 +401,9 @@ public class Calculator implements ActionListener{
 				displayLabel.setText(result+"");
 				
 			}
+			else if(operator=="") {
+				
+			}
 			
 		
 		
@@ -387,6 +414,11 @@ public class Calculator implements ActionListener{
 		else if(e.getSource()==clearButton) {
 			displayLabel.setText("");
 			isEqualToClickedAlready=false;
+			displayLabel.setText("0");
+			oldValue="0";
+			newValue="0";
+			operator="";
+			
 		}
 		
 	}
