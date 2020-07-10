@@ -13,6 +13,7 @@ public class Calculator implements ActionListener{
 	boolean isEqualToClickedAlready=false;
 	boolean isSignClicked=false;
 	boolean isDotClicked=false;
+	boolean isModClicked=false;
 	String oldValue="0",newValue;
 	String operator;
 	Float oldValueF,newValueF;
@@ -329,32 +330,44 @@ public class Calculator implements ActionListener{
 		
 		
 		
-		/*else if(e.getSource()==modButton) {
+		else if(e.getSource()==modButton) {
+			String newValue1;
+			Float oldValue1F,newValue1F;
 			
-			
-			//isOperatorClicked=true;
-			oldValue=displayLabel.getText();
-			oldValueF=Float.parseFloat(oldValue)/100;
-			displayLabel.setText(oldValueF+"");
-			//operator="/";
-			//isEqualToClickedAlready=false;
+			if(isModClicked) {
+				oldValue1F=Float.parseFloat(oldValue);
+				newValue1=displayLabel.getText();
+				newValue1F=Float.parseFloat(newValue1);
+				newValue1F=(oldValue1F*newValue1F)/100;
+				displayLabel.setText(newValue1F+"");
+				isModClicked=false;
+				isOperatorClicked=true;
+				
+			}else {
+				newValue1=displayLabel.getText();
+				newValue1F=Float.parseFloat(newValue1);
+				newValue1F=newValue1F/100;
+				displayLabel.setText(newValue1F+"");
+				isOperatorClicked=true;
+			}
+	
 		}
-		*/
+		
 		
 		else if(e.getSource()==signButton) {
+			String newValue2;
+			newValue2=displayLabel.getText();
 			
-			newValue=displayLabel.getText();
-			
-			if(newValue!="0") {
+			if(newValue2!="0") {
 				if(isSignClicked==false) {
-				newValue="-"+newValue;
-				displayLabel.setText(newValue);
+				newValue2="-"+newValue2;
+				displayLabel.setText(newValue2);
 				isSignClicked=true;
 				
 				}
 				else {
-					newValue= newValue.replaceAll("-", "");
-					displayLabel.setText(newValue);
+					newValue2= newValue2.replaceAll("-", "");
+					displayLabel.setText(newValue2);
 					isSignClicked=false;
 				}
 			}
@@ -385,6 +398,7 @@ public class Calculator implements ActionListener{
 			operator="-";
 			isEqualToClickedAlready=false;
 			isDotClicked=false;
+			isModClicked=true;
 		}
 		else if(e.getSource()==plusButton) {
 			
@@ -393,6 +407,7 @@ public class Calculator implements ActionListener{
 			operator="+";
 			isEqualToClickedAlready=false;
 			isDotClicked=false;
+			isModClicked=true;
 			
 
 		}
