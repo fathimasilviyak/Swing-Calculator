@@ -10,7 +10,7 @@ import javax.swing.SwingConstants;
 
 public class Calculator implements ActionListener{
 	boolean isOperatorClicked=false;
-	boolean isDotClicked=false;
+	
 	boolean isSignClicked=false;
 	
 	boolean isModClicked=false;
@@ -306,16 +306,15 @@ public class Calculator implements ActionListener{
 			}
 		}
 		else if(e.getSource()==dotButton) {
-			
-			if(isDotClicked==false) {
-				if(isOperatorClicked) {
-				displayLabel.setText("0.");
-				isOperatorClicked=false;
-				}else {
-				displayLabel.setText(displayLabel.getText()+ ".");	
-				}
-			isDotClicked=true;
-			}
+				
+			if(isOperatorClicked) {
+					displayLabel.setText("0.");
+					isOperatorClicked=false;
+					}
+				else if(displayLabel.getText().indexOf(".")==-1) {
+						
+					displayLabel.setText(displayLabel.getText()+ ".");	
+					}
 		}
 		else if(e.getSource()==zeroButton) {
 			if(isOperatorClicked||displayLabel.getText()=="0") {
@@ -332,7 +331,7 @@ public class Calculator implements ActionListener{
 		else if(e.getSource()==modButton) {
 			String newValue1;
 			Float oldValue1F,newValue1F;
-			isDotClicked=false;
+			
 			
 			if(isModClicked) {
 				oldValue1F=Float.parseFloat(oldValue);
@@ -380,7 +379,6 @@ public class Calculator implements ActionListener{
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="/";
-			isDotClicked=false;
 			isSignClicked=false;
 		}
 		else if(e.getSource()==mulButton) {
@@ -388,7 +386,6 @@ public class Calculator implements ActionListener{
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="x";
-			isDotClicked=false;
 			isSignClicked=false;
 		}
 		else if(e.getSource()==minusButton) {
@@ -396,7 +393,6 @@ public class Calculator implements ActionListener{
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="-";
-			isDotClicked=false;
 			isModClicked=true;
 			isSignClicked=false;
 		}
@@ -405,7 +401,6 @@ public class Calculator implements ActionListener{
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="+";
-			isDotClicked=false;
 			isModClicked=true;
 			isSignClicked=false;
 
@@ -413,7 +408,6 @@ public class Calculator implements ActionListener{
 		else if(e.getSource()==equalButton) {
 			
 			isOperatorClicked=true;
-			isDotClicked=false;
 			isSignClicked=false;
 			isModClicked=false;
 			if(oldValue!="") {
@@ -454,7 +448,6 @@ public class Calculator implements ActionListener{
 			
 			
 			isSignClicked=false;
-			isDotClicked=false;
 			displayLabel.setText("0");
 			oldValue="";
 			newValue="";
