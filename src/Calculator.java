@@ -355,22 +355,15 @@ public class Calculator implements ActionListener{
 		
 		
 		else if(e.getSource()==signButton) {
-			String newValue2;
-			newValue2=displayLabel.getText();
-			
-			if(newValue2!="0") {
-				if(isSignClicked==false) {
-				newValue2="-"+newValue2;
-				displayLabel.setText(newValue2);
-				isSignClicked=true;
+			if(displayLabel.getText()!="0") {
+			if(displayLabel.getText().contains("-")) {
+				displayLabel.setText(displayLabel.getText().substring(1));
+			}else {
 				
-				}
-				else {
-					newValue2= newValue2.replaceAll("-", "");
-					displayLabel.setText(newValue2);
-					isSignClicked=false;
-				}
+				displayLabel.setText("-"+displayLabel.getText());
 			}
+			}
+
 		}
 		
 		
@@ -380,6 +373,7 @@ public class Calculator implements ActionListener{
 			oldValue=displayLabel.getText();
 			operator="/";
 			isSignClicked=false;
+			newValue="";
 		}
 		else if(e.getSource()==mulButton) {
 			
@@ -387,6 +381,7 @@ public class Calculator implements ActionListener{
 			oldValue=displayLabel.getText();
 			operator="x";
 			isSignClicked=false;
+			newValue="";
 		}
 		else if(e.getSource()==minusButton) {
 	
@@ -395,6 +390,7 @@ public class Calculator implements ActionListener{
 			operator="-";
 			isModClicked=true;
 			isSignClicked=false;
+			newValue="";
 		}
 		else if(e.getSource()==plusButton) {
 			
@@ -403,6 +399,7 @@ public class Calculator implements ActionListener{
 			operator="+";
 			isModClicked=true;
 			isSignClicked=false;
+			newValue="";
 
 		}
 		else if(e.getSource()==equalButton) {
