@@ -10,9 +10,6 @@ import javax.swing.SwingConstants;
 
 public class Calculator implements ActionListener{
 	boolean isOperatorClicked=false;
-	
-	boolean isSignClicked=false;
-	
 	boolean isModClicked=false;
 	String oldValue="",newValue="";
 	String operator="";
@@ -329,25 +326,17 @@ public class Calculator implements ActionListener{
 		
 		
 		else if(e.getSource()==modButton) {
-			String newValue1;
-			Float oldValue1F,newValue1F;
-			
-			
+			Float valueF,valueF1,valuePrc;
 			if(isModClicked) {
-				oldValue1F=Float.parseFloat(oldValue);
-				newValue1=displayLabel.getText();
-				newValue1F=Float.parseFloat(newValue1);
-				newValue1F=(oldValue1F*newValue1F)/100;
-				displayLabel.setText(newValue1F+"");
-				isModClicked=false;
-			
+				valueF=Float.parseFloat(displayLabel.getText());
+				valueF1=Float.parseFloat(oldValue);
+				valuePrc=(valueF1*valueF)/100;
+				displayLabel.setText(valuePrc+"");
 				
 			}else {
-				newValue1=displayLabel.getText();
-				newValue1F=Float.parseFloat(newValue1);
-				newValue1F=newValue1F/100;
-				displayLabel.setText(newValue1F+"");
-				
+			valueF=Float.parseFloat(displayLabel.getText());
+			valuePrc=valueF/100;
+			displayLabel.setText(valuePrc+"");
 			}
 			isOperatorClicked=true;
 	
@@ -372,7 +361,6 @@ public class Calculator implements ActionListener{
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="/";
-			isSignClicked=false;
 			newValue="";
 		}
 		else if(e.getSource()==mulButton) {
@@ -380,7 +368,6 @@ public class Calculator implements ActionListener{
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="x";
-			isSignClicked=false;
 			newValue="";
 		}
 		else if(e.getSource()==minusButton) {
@@ -389,7 +376,6 @@ public class Calculator implements ActionListener{
 			oldValue=displayLabel.getText();
 			operator="-";
 			isModClicked=true;
-			isSignClicked=false;
 			newValue="";
 		}
 		else if(e.getSource()==plusButton) {
@@ -398,14 +384,12 @@ public class Calculator implements ActionListener{
 			oldValue=displayLabel.getText();
 			operator="+";
 			isModClicked=true;
-			isSignClicked=false;
 			newValue="";
 
 		}
 		else if(e.getSource()==equalButton) {
 			
 			isOperatorClicked=true;
-			isSignClicked=false;
 			isModClicked=false;
 			if(oldValue!="") {
 			oldValueF=Float.parseFloat(oldValue);
@@ -434,17 +418,12 @@ public class Calculator implements ActionListener{
 				
 			}
 
-			
-		
 			oldValue=displayLabel.getText();
-		
 		
 			}
 		}
 		else if(e.getSource()==clearButton) {
-			
-			
-			isSignClicked=false;
+			isModClicked=false;
 			displayLabel.setText("0");
 			oldValue="";
 			newValue="";
