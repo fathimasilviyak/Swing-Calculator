@@ -10,14 +10,13 @@ import javax.swing.SwingConstants;
 
 public class Calculator implements ActionListener{
 	boolean isOperatorClicked=false;
-	boolean isEqualToClickedAlready=false;
-	boolean isSignClicked=false;
 	boolean isDotClicked=false;
-	boolean isModClicked=false;
-	String oldValue="0",newValue;
-	String operator;
-	Float oldValueF,newValueF;
+	boolean isSignClicked=false;
 	
+	boolean isModClicked=false;
+	String oldValue="",newValue="";
+	String operator="";
+	Float oldValueF,newValueF;
 	JFrame jf;
 	JLabel displayLabel;
 	JButton sevenButton;
@@ -185,7 +184,7 @@ public class Calculator implements ActionListener{
 		divButton=new JButton("/");
 		divButton.setBounds(300,130 , 80, 80);
 		divButton.setFont(new Font("Arial", Font.PLAIN, 30));
-		divButton.setBackground(Color.decode("#149DDD"));
+		divButton.setBackground(Color.decode("#434B69"));
 		divButton.setForeground(Color.WHITE);
 		divButton.addActionListener(this);
 		jf.add(divButton);
@@ -193,7 +192,7 @@ public class Calculator implements ActionListener{
 		mulButton=new JButton("x");
 		mulButton.setBounds(300,220 , 80, 80);
 		mulButton.setFont(new Font("Arial", Font.PLAIN, 30));
-		mulButton.setBackground(Color.decode("#149DDD"));
+		mulButton.setBackground(Color.decode("#434B69"));
 		mulButton.setForeground(Color.WHITE);
 		mulButton.addActionListener(this);
 		jf.add(mulButton);
@@ -201,7 +200,7 @@ public class Calculator implements ActionListener{
 		minusButton=new JButton("-");
 		minusButton.setBounds(300,310 , 80, 80);
 		minusButton.setFont(new Font("Arial", Font.PLAIN, 30));
-		minusButton.setBackground(Color.decode("#149DDD"));
+		minusButton.setBackground(Color.decode("#434B69"));
 		minusButton.setForeground(Color.WHITE);
 		minusButton.addActionListener(this);
 		jf.add(minusButton);
@@ -209,7 +208,7 @@ public class Calculator implements ActionListener{
 		plusButton=new JButton("+");
 		plusButton.setBounds(300,400 , 80, 80);
 		plusButton.setFont(new Font("Arial", Font.PLAIN, 30));
-		plusButton.setBackground(Color.decode("#149DDD"));
+		plusButton.setBackground(Color.decode("#434B69"));
 		plusButton.setForeground(Color.WHITE);
 		plusButton.addActionListener(this);
 		jf.add(plusButton);
@@ -309,12 +308,12 @@ public class Calculator implements ActionListener{
 		else if(e.getSource()==dotButton) {
 			
 			if(isDotClicked==false) {
-			if(isOperatorClicked) {
+				if(isOperatorClicked) {
 				displayLabel.setText("0.");
 				isOperatorClicked=false;
-			}else {
+				}else {
 				displayLabel.setText(displayLabel.getText()+ ".");	
-			}
+				}
 			isDotClicked=true;
 			}
 		}
@@ -333,6 +332,7 @@ public class Calculator implements ActionListener{
 		else if(e.getSource()==modButton) {
 			String newValue1;
 			Float oldValue1F,newValue1F;
+			isDotClicked=false;
 			
 			if(isModClicked) {
 				oldValue1F=Float.parseFloat(oldValue);
@@ -341,15 +341,16 @@ public class Calculator implements ActionListener{
 				newValue1F=(oldValue1F*newValue1F)/100;
 				displayLabel.setText(newValue1F+"");
 				isModClicked=false;
-				isOperatorClicked=true;
+			
 				
 			}else {
 				newValue1=displayLabel.getText();
 				newValue1F=Float.parseFloat(newValue1);
 				newValue1F=newValue1F/100;
 				displayLabel.setText(newValue1F+"");
-				isOperatorClicked=true;
+				
 			}
+			isOperatorClicked=true;
 	
 		}
 		
@@ -379,53 +380,51 @@ public class Calculator implements ActionListener{
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="/";
-			isEqualToClickedAlready=false;
 			isDotClicked=false;
+			isSignClicked=false;
 		}
 		else if(e.getSource()==mulButton) {
 			
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="x";
-			isEqualToClickedAlready=false;
 			isDotClicked=false;
-			
+			isSignClicked=false;
 		}
 		else if(e.getSource()==minusButton) {
 	
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="-";
-			isEqualToClickedAlready=false;
 			isDotClicked=false;
 			isModClicked=true;
+			isSignClicked=false;
 		}
 		else if(e.getSource()==plusButton) {
 			
 			isOperatorClicked=true;
 			oldValue=displayLabel.getText();
 			operator="+";
-			isEqualToClickedAlready=false;
 			isDotClicked=false;
 			isModClicked=true;
-			
+			isSignClicked=false;
 
 		}
 		else if(e.getSource()==equalButton) {
 			
 			isOperatorClicked=true;
 			isDotClicked=false;
-			if(isEqualToClickedAlready==false) {
-			newValue=displayLabel.getText();
+			isSignClicked=false;
+			isModClicked=false;
+			if(oldValue!="") {
 			oldValueF=Float.parseFloat(oldValue);
+			
+			if(newValue=="") 
+			{
+			newValue=displayLabel.getText();
 			newValueF=Float.parseFloat(newValue);
-			isEqualToClickedAlready=true;
-			
-			}else {
-				oldValue=displayLabel.getText();
-				oldValueF=Float.parseFloat(oldValue);
-			
 			}
+			
 			if(operator=="/") {
 				float result=oldValueF/newValueF;
 				displayLabel.setText(result+"");
@@ -446,19 +445,19 @@ public class Calculator implements ActionListener{
 
 			
 		
+			oldValue=displayLabel.getText();
 		
 		
-		
-		
+			}
 		}
 		else if(e.getSource()==clearButton) {
 			
-			isEqualToClickedAlready=false;
+			
 			isSignClicked=false;
 			isDotClicked=false;
 			displayLabel.setText("0");
-			oldValue="0";
-			newValue="0";
+			oldValue="";
+			newValue="";
 			operator="";
 			
 		}
